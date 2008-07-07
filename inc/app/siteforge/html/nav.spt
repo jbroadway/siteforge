@@ -1,0 +1,17 @@
+<p class="siteforge-project-nav">
+	<a href="{site/prefix}/index/siteforge-app/proj.{proj}">{intl Home}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-news-action/proj.{proj}">{intl News}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-bugs-action/proj.{proj}">{intl Bugs}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-downloads-action/proj.{proj}">{intl Downloads}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-doc-action/proj.{proj}">{intl Docs}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-forum-action/proj.{proj}">{intl Forum}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-cvsinfo-action/proj.{proj}">{intl CVS}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-stats-action/proj.{proj}">{intl Stats}</a>
+</p>

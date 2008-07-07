@@ -1,0 +1,30 @@
+{if obj[context] eq 'action' and siteforge_project_owner (obj[proj])}
+<p>
+	<a href="{site/prefix}/index/siteforge-download-add-form?proj={proj}">{intl Add Download}</a>
+</p>
+{end if}
+
+<ul>
+	{loop obj[list]}
+		<li>
+			<a href="{site/prefix}/index/siteforge-download-action/proj.{proj}?dl={loop/_key}"><strong>{loop/_key}</strong></a>
+			{if session_valid () and session_username () eq obj[user]}
+				&nbsp; &nbsp;
+				<a href="{site/prefix}/index/siteforge-download-delete-action?proj={proj}&dl={loop/_key}" onclick="return confirm ('{intl Are you sure you want to delete this download?}')">{intl Delete}</a>
+			{end if}
+			<br />
+			{intl Added}: {filter siteforge_filter_mtime}{loop/time}{end filter}
+			<br />
+			{intl Size}: {filter siteforge_filter_filesize}{loop/size}{end filter}
+		</li>
+	{end loop}
+</ul>
+
+{if obj[context] ne 'action'}
+<p>
+	<a href="{site/prefix}/index/siteforge-downloads-action/proj.{proj}">{intl All Downloads}</a>
+	{if siteforge_project_owner (obj[proj])}
+	&nbsp; &nbsp;
+	<a href="{site/prefix}/index/siteforge-download-add-form?proj={proj}">{intl Add Download}</a>
+	{end if}
+</p>

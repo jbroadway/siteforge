@@ -1,0 +1,63 @@
+1.0.6
+
+- Replaced mime_content_type() with mime() from saf.Functions for file downloads.
+- Added RSS support by project forum and forums from all projects.
+- Updated the default configuration settings and project categories.
+- Added file attachments to bug reports.
+- Fixed a possible issue with file names with spaces.
+- Added file attachments to bug report comments.
+
+1.0.5
+
+- Fixed the bugs RSS feed by removing descriptions.
+- Fixed the bugs RSS feed so it doesn't include resolved bugs.
+- Fixed documentation/internal link error in bug comments.
+- Fixed project not found page.
+- Fixed missing parameter passing in the bugs pager.
+- Added status as description to bugs RSS feed.
+- Improved security on downloads and stats download accuracy.
+- Verifies project existence properly everywhere now.
+- Prevents duplicate project member joins from double-clicking.
+- Fixed the sorting of versions in stats, now using version_compare().
+
+1.0.4
+
+- Properly hides pending/rejected projects now.
+- Fixed a workaround that allowed self-approving of projects.
+- Added ability to accept optional donations for each project using paypal.
+- Added a new 'All Projects' link from the home page which provides an
+  alphabetical list of all projects for fast access for those who already
+  know what they're looking for by name.
+- Updated the install docs with a missing step of setting the data folder
+  permissions.
+
+1.0.3
+
+- Fixed a bug causing downloads to fail in some circumstances.
+- Resolved bugs no longer display on the project home pages.
+- Stats now sort download files in reverse alphanumeric order, so newer releases
+  will always appear above older ones.
+- Deleting a project now deletes all references to that project as well.  Please
+  note that this is done through a workflow action which needs to be activated
+  under Control Panel > Admin > Workflow Services.
+
+1.0.2
+
+- Fixed updating of project statuses, which had problems when bugs were reported
+  by other users than the project owner.
+- Fixed typo causing it to fail to create a general forum section for new
+  projects.
+
+1.0.1
+
+- Changed hard-coded SQL referencing the sitellite_user table to now use the
+  session_*() functions.  Requires Sitellite 4.2.5+.  This is to accommodate
+  alternate session source drivers in Sitellite.
+- Changed siteforge/cron.php to support optional secondary MySQL database
+  for users.
+- Added ability to override the bugs, docs, and forum with your own existing
+  ones for projects that already have these things.
+- Fixed the edit project form so projects can't change their ID any more (they
+  shouldn't have been able to in the first place).
+- The CVS link now shows a list of modules if it can do an `ls` on the project
+  repository directory.

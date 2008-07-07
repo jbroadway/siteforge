@@ -1,0 +1,49 @@
+{box siteforge/nav?proj=[id]}
+
+<h2>{intl Description}</h2>
+
+<p>{description}</p>
+
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tr>
+		<td valign="top" width="50%">
+			<h2>{intl Information}</h2>
+
+			<ul>
+				{if not empty (obj.ext_url)}
+				<li>{intl Website}: <a href="{ext_url}">{ext_url}</a></li>
+				{end if}
+				<li>{intl Audience}: {filter siteforge_filter_audience}{audience}{end filter}</li>
+				<li>{intl Category}: <a href="{site/prefix}/index/siteforge-app/cat.{category}/name.{filter siteforge_filter_cat_name}{category}{end filter}">{filter siteforge_filter_cat}{category}{end filter}</a></li>
+				<li>{intl License}: {filter siteforge_filter_license}{license}{end filter}</li>
+				<li>{intl Status}: {filter siteforge_filter_status}{status}{end filter}</li>
+				<li>{intl Owner}: <a href="{site/prefix}/index/sitemember-profile-action/user.{user_id}">{user_id}</a></li>
+				<li>{intl Members}:
+					{loop obj.members}{if loop._index ne 1}, {end if}<a href="{site/prefix}/index/sitemember-profile-action/user.{loop/_value}">{loop/_value}</a>{end loop}
+					{if siteforge_user_can_join (obj.user_id, obj.members)}(<a href="{site/prefix}/index/siteforge-member-join-action?proj={id}">{intl Join}</a>){end if}
+					{if siteforge_is_member (obj.members)}(<a href="{site/prefix}/index/siteforge-member-quit-action?proj={id}">{intl Quit}</a>){end if}
+				</li>
+			</ul>
+			
+			{if siteforge_project_owner (obj.id) and (obj.status ne 1 and obj.status ne 3)}
+			<p>
+				<a href="{site/prefix}/index/siteforge-project-edit-form?proj_id={id}">{intl Edit Project}</a>
+			</p>
+			{end if}
+		</td>
+		<td valign="top" width="50%">
+			<h2>{intl Downloads}</h2>
+			{box siteforge/downloads?proj=[id]}
+		</td>
+	</tr>
+	<tr>
+		<td valign="top" width="50%">
+			<h2>{intl News}</h2>
+			{box siteforge/news?proj=[id]}
+		</td>
+		<td valign="top" width="50%">
+			<h2>{intl Bugs}</h2>
+			{box siteforge/bugs?proj=[id]}
+		</td>
+	</tr>
+</table>

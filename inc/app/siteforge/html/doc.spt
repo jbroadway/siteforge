@@ -1,0 +1,27 @@
+{box siteforge/nav?proj=[proj_id]}
+
+<h2>{title}</h2>
+
+<div class="siteforge-doc-nav" style="width: 175px; background: #eee; float: right; padding: 5px; margin: 5px">
+	{if siteforge_project_owner (obj.proj_id)}
+	<h2>{intl Doc Manager}</h2>
+
+	<ul>
+		<li><a href="{site/prefix}/index/siteforge-doc-add-form?proj={proj_id}">{intl Add Doc}</a></li>
+		<li><a href="{site/prefix}/index/siteforge-doc-edit-form?proj={proj_id}&doc={id}">{intl Edit This Doc}</a></li>
+		<li><a href="{site/prefix}/index/siteforge-doc-delete-action?proj={proj_id}&doc={id}" onclick="return confirm ('{intl Are you sure you want to delete this doc?}')">{intl Delete This Doc}</a></li>
+	</ul>
+	{end if}
+
+	<h2>{intl Menu}</h2>
+
+	<ul>
+		{loop obj.nav}
+			<li><a href="{site/prefix}/index/siteforge-app/proj.{proj_id}/doc.{loop/_key}">{loop/_value}</a></li>
+		{end loop}
+	</ul>
+</div>
+
+<div class="siteforge-doc-body">
+{filter siteforge_filter_doc_body}{body}{end filter}
+</div>

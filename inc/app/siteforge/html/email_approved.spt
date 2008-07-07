@@ -1,0 +1,18 @@
+The following project was approved:
+
+{name}
+
+Your project homepage is accessible via the following link:
+
+{site/url}/index/siteforge-app/proj.{id}
+
+You will receive another email containing the instructions for acecssing
+your project's CVS repository within the next few hours.  At that point,
+you will be able to begin building your project itself.  In the meantime,
+feel free to use the administrative functions built into our site to
+create documentation, news announcements, and other information related
+to your project.
+
+Sincerely,
+
+The {site/domain} Team

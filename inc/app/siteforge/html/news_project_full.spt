@@ -1,0 +1,25 @@
+{box siteforge/nav?proj=[proj]}
+
+{if siteforge_project_owner (obj[proj])}
+<p>
+	<a href="{site/prefix}/index/siteforge-news-add-form?proj={proj}">{intl Add News}</a>
+</p>
+{end if}
+
+<p>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td>{spt PAGER_TEMPLATE_FROM_TO}</td>
+		<td align="right">{if pager.total}{spt PAGER_TEMPLATE_PREV_PAGE_LIST_NEXT}{end if}</td>
+	</tr>
+</table>
+</p>
+
+<ul>
+	{loop obj[news]}
+		<li>
+			<a href="{site/prefix}/index/siteforge-news-action/id.{loop/id}/headline.{filter siteforge_filter_name}{loop/headline}{end filter}"><strong>{loop/headline}</strong></a><br />
+			{filter siteforge_filter_date}{loop/ts}{end filter}
+		</li>
+	{end loop}
+</ul>

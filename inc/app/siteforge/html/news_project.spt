@@ -1,0 +1,16 @@
+<ul>
+	{loop obj[news]}
+		<li>
+			<a href="{site/prefix}/index/siteforge-news-action/id.{loop/id}/headline.{filter siteforge_filter_name}{loop/headline}{end filter}"><strong>{loop/headline}</strong></a><br />
+			{filter siteforge_filter_date}{loop/ts}{end filter}
+		</li>
+	{end loop}
+</ul>
+
+<p>
+	<a href="{site/prefix}/index/siteforge-news-action/proj.{proj}">{intl All News}</a>
+	{if siteforge_project_owner (obj[proj])}
+	&nbsp; &nbsp;
+	<a href="{site/prefix}/index/siteforge-news-add-form?proj={proj}">{intl Add News}</a>
+	{end if}
+</p>

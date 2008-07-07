@@ -1,0 +1,62 @@
+{box siteforge/nav?proj=[proj]}
+
+{alt #fff #eee}
+
+<p class="siteforge-forum-nav">
+	{if siteforge_project_owner (obj[proj])}
+	<a href="{site/prefix}/index/siteforge-forum-topic-form/proj.{proj}">{intl Add Topic}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	{end if}
+	<a href="{site/prefix}/index/siteforge-forum-search-action/proj.{proj}">{intl Search}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-forum-rss-action/proj.{proj}">{intl Syndicated Feed (RSS)}</a>
+</p>
+
+<p>
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tr>
+		<th>{intl Topic}</th>
+		<th width="10%">{intl Threads}</th>
+		<th width="10%">{intl Posts}</th>
+		<th width="20%">{intl Last Post}</th>
+	</tr>
+{loop obj[list]}
+	<tr style="background: {alt/next}">
+		<td valign="top">
+			<a href="{site/prefix}/index/siteforge-forum-topic-action/id.{loop/id}/title.{filter siteforge_filter_name}{loop/name}{end filter}"><strong>{loop/name}</strong></a>
+			{if siteforge_project_owner (obj[proj])}
+			&nbsp; &nbsp; <a href="{site/prefix}/index/siteforge-forum-topic-edit-form?id={loop/id}">{intl Edit}</a>
+			&nbsp; &nbsp; <a href="{site/prefix}/index/siteforge-forum-topic-delete-action?id={loop/id}" onclick="return confirm ('{intl Are you sure you want to delete this topic?}')">{intl Delete}</a>
+			{end if}
+			<br />
+			{loop/summary}
+		</td>
+		<td valign="top" align="right">{loop/threads}</td>
+		<td valign="top" align="right">{loop/posts}</td>
+		<td valign="top">
+			{loop loop.latest}
+				{filter siteforge_filter_date}{loop/posted}{end filter}<br />
+				<a href="{site/prefix}/index/siteforge-forum-post-action/id.{loop/id}/title.{filter siteforge_filter_name}{loop/subject}{end filter}">{intl Read}</a>
+				(<a href="{site/prefix}/index/sitemember-profile-action/user.{loop/user_id}">{loop/user_id}</a>)
+			{end loop}
+		</td>
+	</tr>
+{end loop}
+</table>
+</p>
+
+{alt/reset}
+
+<p>
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tr>
+		<th colspan="2">{intl Forum Statistics}</th>
+	</tr>
+{loop obj[stats]}
+	<tr style="background: {alt/next}">
+		<td><abbr title="{loop/title}">{loop/name}</abbr></td>
+		<td align="right">{loop/total}</td>
+	</tr>
+{end loop}
+</table>
+</p>

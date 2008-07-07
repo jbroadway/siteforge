@@ -1,0 +1,23 @@
+<html>
+	<head>
+		<title>{intl Preview}</title>
+		<link rel="stylesheet" type="text/css" href="{site/prefix}/inc/html/{set}/site.css" />
+		<script language="javascript">
+
+			top.resizeTo (600, 500);
+			top.moveTo (100, 100);
+
+		</script>
+	</head>
+	<body style="margin: 25px">
+
+		<p style="width: 50%; float: right; text-align: right"><a href="#" onclick="window.close ()">{intl Close Window}</a></p>
+
+		<h1 style="border-bottom: 1px solid #aaa">{intl Preview}</h1>
+
+		<div class="siteforge-preview-body">
+		{filter siteforge_filter_wiki_body}{body}{end filter}
+		</div>
+
+	</body>
+</html>

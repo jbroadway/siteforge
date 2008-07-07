@@ -1,0 +1,13 @@
+<ul>
+	{loop obj[list]}
+		<li>
+			<a href="{site/prefix}/index/siteforge-app/proj.{loop/id}"><strong>{loop/name}</strong></a><br />
+			{intl Category}: <a href="{site/prefix}/index/siteforge-app/cat.{loop/category}/name.{filter siteforge_filter_cat_name}{loop/category}{end filter}">{filter siteforge_filter_cat}{loop/category}{end filter}</a><br />
+			{intl Added}: {filter siteforge_filter_date}{loop/ts}{end filter}
+		</li>
+	{end loop}
+</ul>
+
+<p>
+	<a href="{site/prefix}/index/siteforge-allprojects-action">{intl All Projects}</a>
+</p>

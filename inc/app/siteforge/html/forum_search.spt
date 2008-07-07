@@ -1,0 +1,6 @@
+<form method="get">
+<p>
+<input type="hidden" name="proj" value="{proj}" />
+{intl Search} <input type="text" name="query" /> <input type="submit" value="{intl Go}" />
+</p>
+</form>

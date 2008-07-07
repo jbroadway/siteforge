@@ -1,0 +1,9 @@
+<ul>
+	{loop obj[news]}
+		<li>
+			<a href="{site/prefix}/index/siteforge-news-action/id.{loop/id}/headline.{filter siteforge_filter_name}{loop/headline}{end filter}"><strong>{loop/headline}</strong></a><br />
+			{intl Project}: <a href="{site/prefix}/index/siteforge-app/proj.{loop/proj_id}">{filter siteforge_filter_proj}{loop/proj_id}{end filter}</a><br />
+			{intl Date}: {filter siteforge_filter_date}{loop/ts}{end filter}
+		</li>
+	{end loop}
+</ul>

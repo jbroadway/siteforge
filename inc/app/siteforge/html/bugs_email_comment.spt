@@ -1,0 +1,14 @@
+The following comment has been added to bug #{id}:
+
+Posted By: {commenter}
+Comment:
+
+{comment}
+
+--
+
+For more information visit:
+
+{site/url}/index/siteforge-bugs-action/id.{id}
+
+--

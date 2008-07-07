@@ -1,0 +1,10 @@
+<table border="0" cellpadding="3" cellspacing="1" width="100%" class="siteforge-index">
+	<tr>
+		<td valign="top" class="siteforge-index-left" width="50%">
+			{box sitellite/sidebar?position=siteforge_index_left}
+		</td>
+		<td valign="top" class="siteforge-index-right" width="50%">
+			{box sitellite/sidebar?position=siteforge_index_right}
+		</td>
+	</tr>
+</table>

@@ -1,0 +1,13 @@
+<ul>
+	<li>{intl Users}: {users}</li>
+	<li>{intl Projects}: {projects}</li>
+	<li>{intl Project Hits}: {hits}</li>
+	<li>{intl Downloads}: {downloads}</li>
+	<li>{intl Top Projects}:
+		<ul>
+			{loop obj[top5]}
+				<li><a href="{site/prefix}/index/siteforge-app/proj.{loop/_key}">{filter siteforge_filter_proj}{loop/_key}{end filter} ({loop/_value})</a></li>
+			{end loop}
+		</ul>
+	</li>
+</ul>

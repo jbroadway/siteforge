@@ -1,0 +1,12 @@
+{box siteforge/nav?proj=[proj_id]}
+
+<p>
+	{intl Project}: <a href="{site/prefix}/index/siteforge-app/proj.{proj_id}">{filter siteforge_filter_proj}{proj_id}{end filter}</a><br />
+	{intl Date}: {filter siteforge_filter_date}{ts}{end filter}
+</p>
+
+<p>{filter siteforge_filter_wiki_body}{body}{end filter}</p>
+
+<p>
+	<a href="{site/prefix}/index/siteforge-news-action/proj.{proj_id}">{intl More Project News}</a>
+</p>

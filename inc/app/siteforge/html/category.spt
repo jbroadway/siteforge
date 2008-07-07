@@ -1,0 +1,29 @@
+{alt #fff #eee}
+
+<p>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td>{spt PAGER_TEMPLATE_FROM_TO}</td>
+		<td align="right">{if pager.total}{spt PAGER_TEMPLATE_PREV_PAGE_LIST_NEXT}{end if}</td>
+	</tr>
+</table>
+</p>
+
+{loop obj[list]}
+<div class="siteforge-project-summary" style="background: {alt/next}; padding: 3px">
+	<h3 class="siteforge-project-name"><a href="{site/prefix}/index/siteforge-app/proj.{loop/id}">{loop/name}</a></h3>
+	<p class="siteforge-project-description">{loop/description}</p>
+	<table border="0" cellpadding="0" cellspacing="0" width="100%">
+		<tr>
+			<td width="50%" valign="top">
+				<span class="siteforge-project-detail-name">{intl Category}:</span> <a href="{site/prefix}/index/siteforge-app/cat.{loop/category}/name.{filter siteforge_filter_cat_name}{loop/category}{end filter}">{filter siteforge_filter_cat}{loop/category}{end filter}</a><br />
+				<span class="siteforge-project-detail-name">{intl License}:</span> {filter siteforge_filter_license}{loop/license}{end filter}
+			</td>
+			<td width="50%" valign="top">
+				<span class="siteforge-project-detail-name">{intl Audience}:</span> {filter siteforge_filter_audience}{loop/audience}{end filter}<br />
+				<span class="siteforge-project-detail-name">{intl Status}:</span> {filter siteforge_filter_status}{loop/status}{end filter}
+			</td>
+		</tr>
+	</table>
+</div>
+{end loop}

@@ -1,0 +1,7 @@
+The status of bug #{id} has been changed to "{status}".
+
+For more information visit:
+
+{site/url}/index/siteforge-bugs-action/id.{id}
+
+--

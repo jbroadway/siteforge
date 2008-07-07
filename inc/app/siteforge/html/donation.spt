@@ -1,0 +1,25 @@
+{if not empty (obj.donation_message)}
+<h2>{intl Message from the developer}:</h2>
+
+<p>{filter siteforge_filter_wiki_body}{donation_message}{end filter}</p>
+{end if}
+{if else}
+<p>{intl Your donation helps to support the ongoing efforts of the developers to create new features and releases, fix bugs, and provide community support for this project.}
+{end if}
+
+<form action="https://www.paypal.com/cgi-bin/webscr" method="post">
+<p align="center">
+	<input type="hidden" name="cmd" value="_xclick" />
+	<input type="hidden" name="business" value="{donation_paypal_id}" />
+	<input type="hidden" name="item_name" value="Donation to the '{name}' project" />
+	<input type="hidden" name="return" value="http://{site/domain}{site/prefix}/index/siteforge-download-action/proj.{id}?step=2&dl={cgi/dl}" />
+	<input type="hidden" name="cancel_return" value="http://{site/domain}{site/prefix}/index/siteforge-download-action/proj.{id}?step=2&dl={cgi/dl}" />
+	<input type="hidden" name="no_note" value="1" />
+	<input type="hidden" name="currency_code" value="USD" />
+	<input type="hidden" name="tax" value="0" />
+	<input type="hidden" name="bn" value="PP-DonationsBF" />
+	<input type="image" src="http://{site/domain}{site/prefix}/inc/app/siteforge/pix/donate.gif" border="0" name="submit" alt="Make payments with PayPal - it's fast, free and secure!" />
+	<br /><br />
+	<a href="{site/prefix}/index/siteforge-download-action?proj={cgi/proj}&step=2&dl={cgi/dl}">{intl Download without donating}</a>
+</p>
+</form>

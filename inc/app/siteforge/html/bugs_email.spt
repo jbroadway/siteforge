@@ -1,0 +1,13 @@
+Submitted By: {session/username}
+Summary: {subject}
+Details:
+
+{body}
+
+--
+
+For more information visit:
+
+{site/url}/index/siteforge-bugs-action/id.{id}
+
+--

@@ -1,0 +1,49 @@
+{box siteforge/nav?proj=[proj]}
+
+{alt #fff #eee}
+
+<p class="siteforge-forum-nav">
+	<a href="{site/prefix}/index/siteforge-forum-action/proj.{proj}">{intl Up}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-forum-post-form?topic={id}">{intl New Thread}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-forum-search-action/proj.{proj}">{intl Search}</a>
+	&nbsp; &nbsp; &nbsp;&nbsp;
+	<a href="{site/prefix}/index/siteforge-forum-rss-action/proj.{proj}/topic.{id}">{intl Syndicated Feed (RSS)}</a>
+</p>
+
+<p>
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td>{spt PAGER_TEMPLATE_FROM_TO}</td>
+		<td align="right">{if pager.total}{spt PAGER_TEMPLATE_PREV_PAGE_LIST_NEXT}{end if}</td>
+	</tr>
+</table>
+</p>
+
+<p>
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tr>
+		<th>{intl Threads}</th>
+		<th width="10%">{intl Replies}</th>
+		<th width="10%">{intl Author}</th>
+		<th width="25%">{intl Last Post}</th>
+	</tr>
+{loop obj[list]}
+	<tr style="background: {alt/next}">
+		<td valign="top">
+			<a href="{site/prefix}/index/siteforge-forum-post-action/id.{loop/id}/title.{filter siteforge_filter_name}{loop/subject}{end filter}">{loop/subject}</a><br />
+		</td>
+		<td valign="top" align="right">{loop/replies}</td>
+		<td valign="top"><a href="{site/prefix}/index/sitemember-profile-action/user.{loop/user_id}">{loop/user_id}</a></td>
+		<td valign="top">
+			{loop loop.latest}
+				{filter siteforge_filter_date}{loop/posted}{end filter}<br />
+				<a href="{site/prefix}/index/siteforge-forum-post-action/id.{loop/id}/title.{filter siteforge_filter_name}{loop/subject}{end filter}">{intl Read}</a>
+				(<a href="{site/prefix}/index/sitemember-profile-action/user.{loop/user_id}">{loop/user_id}</a>)
+			{end loop}
+		</td>
+	</tr>
+{end loop}
+</table>
+</p>

@@ -34,6 +34,7 @@ appconf_set ('home', 'box:sitemember/home');
 appconf_set ('member_services', array (
 	'home' => array (
 		intl_get ('Profile') => 'box:sitemember/profile/default',
+		intl_get ('My Projects') => 'box:siteforge/my/projects',
 		//intl_get ('Home Page') => 'box:sitemember/homepage',
 		//intl_get ('Banner Ads') => 'box:sitebanner/client',
 		//intl_get ('Story Submissions') => 'box:news/my/summary',
@@ -41,6 +42,7 @@ appconf_set ('member_services', array (
 	),
 	'profile' => array (
 		intl_get ('Profile') => 'box:sitemember/profile/default',
+		intl_get ('Projects') => 'box:siteforge/my/profile',
 		//intl_get ('Home Page') => 'box:sitemember/homepage',
 		//intl_get ('News Stories') => 'box:news/my/stories',
 		//intl_get ('Event Listings') => 'box:siteevent/my/events',

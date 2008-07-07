@@ -1,0 +1,20 @@
+Use the following link to approve or reject this project:
+
+{site/url}/index/cms-app?forward={filter none}{forward}{end filter}
+
+-- Project Information --
+
+ID:       {proj_id}
+Name:     {name}
+Owner:    {session/username}
+Category: {filter siteforge_filter_cat}{category}{end filter}
+License:  {filter siteforge_filter_license}{license}{end filter}
+Audience: {filter siteforge_filter_audience}{audience}{end filter}
+
+External Website: {ext_url}
+
+Description:
+
+{description}
+
+--

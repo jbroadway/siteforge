@@ -1,0 +1,72 @@
+{box siteforge/nav?proj=[proj]}
+
+<h2>{intl Anonymous CVS Access}</h2>
+
+<p>To retrieve the source code for this project via anonymous CVS access, use
+the following commands:</p>
+
+<pre>export CVSROOT=:pserver:anonymous@{cvs_server}:{appconf/cvs_base}/{proj}
+cvs login
+(Leave password blank)
+cvs co module_name</pre>
+
+{if count (obj[modules]) gt 1}
+<h2>{intl Available Modules}</h2>
+
+<ul>
+{loop obj[modules]}
+	{if loop._value ne 'CVSROOT'}<li>{loop/_value}</li>{end if}
+{end loop}
+</ul>
+{end if}
+
+<h2>{intl CVS Access for Project Owners}</h2>
+
+<p>To manage your source code repository as a project owner, use the following
+connection parameters and commands:</p>
+
+<h3>Logging In</h3>
+
+<pre>export CVSROOT=:pserver:{proj}@{cvs_server}:{appconf/cvs_base}/{proj}
+cvs login
+(Enter password)</pre>
+
+<h3>Creating a Project</h3>
+
+<pre># 1. make a project directory and move into it
+mkdir myproj
+cd myproj
+
+# 2. create a test file
+cat &lt;&lt;END&gt;test.txt
+This is a test
+END
+
+# 3. import the test project
+cvs import -m "Initial import" myproj {proj} myproj_0_0_1
+
+# 4. move the old project directory out of the way
+cd ..
+mv myproj myproj_old
+
+# 5. checkout a working copy of the test project
+cvs co myproj
+cd myproj
+ls</pre>
+
+<h3>Making Changes</h3>
+
+<pre># 1. modify the test.txt file
+cat &lt;&lt;END&gt;&gt;test.txt
+This is another test
+END
+
+# 2. commit our changes
+cvs commit -m "Changed test.txt"</pre>
+
+<h3>Updating Your Copy</h3>
+
+<pre>cvs update -dP</pre>
+
+<p>For more information about CVS usage, please refer to the <a
+href="http://www.cvshome.org/">CVS website.</a></p>

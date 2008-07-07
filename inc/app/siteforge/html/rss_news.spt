@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+
+<rdf:RDF
+	xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+	xmlns:dc="http://purl.org/dc/elements/1.1/"
+	xmlns:syn="http://purl.org/rss/1.0/modules/syndication/"
+	xmlns:admin="http://webns.net/mvcb/"
+	xmlns="http://purl.org/rss/1.0/"
+>
+
+<channel rdf:about="{site/url}/index/siteforge-app">
+
+	<title>{filter siteforge_filter_proj}{proj}{end filter} - {intl Project News}</title>
+	<link>{site/url}/index/siteforge-app</link>
+	<description>{intl The latest announcements for this project.}</description>
+
+	<dc:language>{if not empty (intl_locale ())}{intl/locale}-{end if}{intl/language}</dc:language>
+	<dc:date>{siteforge_rss_date}</dc:date>
+
+	<syn:updatePeriod>hourly</syn:updatePeriod>
+	<syn:updateFrequency>1</syn:updateFrequency>
+	<syn:updateBase>1970-01-01T00:00+00:00</syn:updateBase>
+
+	<admin:generatorAgent rdf:resource="http://www.sitellite.org/v.{SITELLITE_VERSION}" />
+
+	<items>
+		<rdf:Seq>
+{loop obj[list]}
+			<rdf:li rdf:resource="{site/url}/index/siteforge-news-action/id.{loop/id}/headline.{filter siteforge_filter_name}{loop/headline}{end filter}" />
+{end loop}
+		</rdf:Seq>
+	</items>
+
+</channel>
+
+{loop obj[list]}
+<item rdf:about="{site/url}/index/siteforge-news-action/id.{loop/id}/headline.{filter siteforge_filter_name}{loop/headline}{end filter}">
+	<title>{loop/headline}</title>
+	<link>{site/url}/index/siteforge-news-action/id.{loop/id}/headline.{filter siteforge_filter_name}{loop/headline}{end filter}</link>
+	<description>{loop/body}</description>
+	<dc:date>{filter siteforge_filter_rss_date}{loop/ts}{end if}</dc:date>
+</item>
+
+{end loop}
+</rdf:RDF>

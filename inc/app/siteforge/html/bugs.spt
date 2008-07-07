@@ -1,0 +1,56 @@
+{box siteforge/nav?proj=[proj]}
+
+{alt #fff #eee}
+
+{filter none}{facets}{end filter}
+
+<!--
+<form method="get" action="{site/prefix}/index/siteforge-bugs-action/proj.{proj}">
+	<p align="right">
+		{intl Status}: <select name="status" onchange="this.form.submit ()">
+			<option value="">- {intl SELECT} -</option>
+			<option value="new"{if obj[status] eq 'new'} selected="selected"{end if}>{intl New}</option>
+			<option value="feature request"{if obj[status] eq 'feature request'} selected="selected"{end if}>{intl Feature Request}</option>
+			<option value="verified"{if obj[status] eq 'verified'} selected="selected"{end if}>{intl Verified}</option>
+			<option value="invalid"{if obj[status] eq 'invalid'} selected="selected"{end if}>{intl Invalid}</option>
+			<option value="not reproducible"{if obj[status] eq 'not reproducible'} selected="selected"{end if}>{intl Not Reproducible}</option>
+			<option value="need more info"{if obj[status] eq 'need more info'} selected="selected"{end if}>{intl Need More Info}</option>
+			<option value="resolved"{if obj[status] eq 'resolved'} selected="selected"{end if}>{intl Resolved}</option>
+		</select>
+	</p>
+</form>
+-->
+
+<p style="width: 100%; float: left; padding-top: 5px; text-align: right">
+	<a href="{site/prefix}/index/siteforge-bugs-add-form?proj={proj}">{intl Report a Bug}</a>
+</p>
+
+<p style="clear: both">
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td>{spt PAGER_TEMPLATE_FROM_TO}</td>
+		<td align="right">{if pager.total}{spt PAGER_TEMPLATE_PREV_PAGE_LIST_NEXT}{end if}</td>
+	</tr>
+</table>
+</p>
+
+<p>
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tr>
+		<th>{intl ID}</th>
+		<th>{intl Summary}</th>
+		<th>{intl Status}</th>
+		<th>{intl Date}</th>
+		<th>{intl Submitter}</th>
+	</tr>
+{loop obj[bugs]}
+	<tr style="background: {alt/next}">
+		<td align="center"><a href="{site/prefix}/index/siteforge-bugs-action/id.{loop/id}">{loop/id}</a></td>
+		<td><a href="{site/prefix}/index/siteforge-bugs-action/id.{loop/id}">{loop/subject}</a></td>
+		<td align="center">{filter ucwords}{loop/status}{end filter}</td>
+		<td align="center">{filter siteforge_filter_date}{loop/ts}{end filter}</td>
+		<td align="center"><a href="{site/prefix}/index/sitemember-profile-action/user.{loop/user_id}">{loop/user_id}</a></td>
+	</tr>
+{end loop}
+</table>
+</p>

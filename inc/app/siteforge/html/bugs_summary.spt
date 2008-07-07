@@ -1,0 +1,16 @@
+<ul>
+	{loop obj[bugs]}
+		<li>
+			<a href="{site/prefix}/index/siteforge-bugs-action/id.{loop/id}"><strong>{loop/subject}</strong></a><br />
+			{filter siteforge_filter_date}{loop/ts}{end filter}
+		</li>
+	{end loop}
+</ul>
+
+<p>
+	<a href="{site/prefix}/index/siteforge-bugs-action/proj.{proj}">{intl All Bugs}</a>
+	{if session_valid ()}
+	&nbsp; &nbsp;
+	<a href="{site/prefix}/index/siteforge-bugs-add-form?proj={proj}">{intl Report a Bug}</a>
+	{end if}
+</p>

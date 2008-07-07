@@ -1,0 +1,147 @@
+{box siteforge/nav?proj=[proj_id]}
+
+<h2>{intl Information}</h2>
+
+<table border="0" cellpadding="0" cellspacing="0" width="100%">
+	<tr>
+		<td width="50%" valign="top">
+<ul>
+	<li>{intl Project}: <a href="{site/prefix}/index/siteforge-app/proj.{proj_id}">{filter siteforge_filter_proj}{proj_id}{end filter}</a></li>
+	<li>{intl Date}: {filter siteforge_filter_date}{ts}{end filter}</li>
+	<li>{intl Submitter}: <a href="{site/prefix}/index/sitemember-profile-action/user.{user_id}">{user_id}</a></li>
+	<li>{intl Status}: {filter ucwords}{status}{end filter}</li>
+	{if obj.attachment}<li>{intl Attachment}: <a href="{site/prefix}/index/siteforge-bugs-download-action?proj={proj_id}&bug={id}&file={filter siteforge_filter_bug_attachment}{attachment}">{attachment}{end filter}</a></li>{end if}
+</ul>
+		</td>
+		<td width="50%" valign="top">
+<ul>
+{loop obj.extras}
+	<li>{loop/_key}: {loop/_value}</li>
+{end loop}
+</ul>
+		</td>
+	</tr>
+	<tr>
+		<td width="50%" valign="top">
+{if siteforge_project_owner (obj.proj_id)}
+<form method="post" action="{site/prefix}/index/siteforge-bugs-status-action">
+<input type="hidden" name="bug" value="{id}" />
+<p>
+	{intl New Status}: <select name="status" onchange="this.form.submit ()">
+		<option value="new"{if obj.status eq 'new'} selected="selected"{end if}>{intl New}</option>
+		<option value="feature request"{if obj.status eq 'feature request'} selected="selected"{end if}>{intl Feature Request}</option>
+		<option value="verified"{if obj.status eq 'verified'} selected="selected"{end if}>{intl Verified}</option>
+		<option value="invalid"{if obj.status eq 'invalid'} selected="selected"{end if}>{intl Invalid}</option>
+		<option value="not reproducible"{if obj.status eq 'not reproducible'} selected="selected"{end if}>{intl Not Reproducible}</option>
+		<option value="need more info"{if obj.status eq 'need more info'} selected="selected"{end if}>{intl Need More Info}</option>
+		<option value="resolved"{if obj.status eq 'resolved'} selected="selected"{end if}>{intl Resolved}</option>
+	</select>
+</p>
+</form>
+{end if}
+{if not session_valid ()}
+<form method="post" action="{site/prefix}/index/siteforge-bugs-subscribe-action">
+<input type="hidden" name="bug" value="{id}" />
+<p>
+{intl Email}:<br />
+<input type="text" name="email" /><br />
+<input type="submit" value="{intl Subscribe}" />
+&nbsp;
+<input type="submit" name="unsub" value="{intl Unsubscribe}" />
+</p>
+</form>
+{end if}
+		</td>
+		<td width="50%" valign="top">
+{if session_valid ()}
+<p>
+<a href="{site/prefix}/index/siteforge-bugs-subscribe-action?bug={id}">{intl Subscribe}</a>
+&nbsp; &nbsp;
+<a href="{site/prefix}/index/siteforge-bugs-unsubscribe-action?bug={id}">{intl Unsubscribe}</a>
+</p>
+{end if}
+{if not session_valid ()}
+&nbsp;
+{end if}
+		</td>
+	</tr>
+</table>
+
+<h2>{intl Details}</h2>
+
+<p>{filter siteforge_filter_wiki_body}{body}{end filter}</p>
+
+<p>
+	<a href="{site/prefix}/index/siteforge-bugs-action/proj.{proj_id}">{intl More Bugs}</a>
+</p>
+
+{if count (obj.comments) gt 0}
+<a name="siteforge-bug-comments"></a>
+<h2>{intl Comments}</h2>
+
+<p><a href="#siteforge-add-comment">{intl Add Comment}</a></p>
+
+{alt #fff #eee}
+
+{loop obj.comments}
+<div class="siteforge-bug-comment" style="background: {alt/next}; padding: 3px">
+	<span class="siteforge-bug-comment-byline">{intl Posted By}: <a href="{site/prefix}/index/sitemember-profile-action/user.{loop/user_id}">{loop/user_id}</a>,  {intl Posted On}: {filter siteforge_filter_date}{loop/ts}{end filter}</span><br />
+	{filter siteforge_filter_wiki_body}{loop/body}{end filter}
+	{if loop.attachment}
+	<p>{intl Attachment}: <a href="{site/prefix}/index/siteforge-bugs-comment-download-action?proj={proj_id}&comment={loop/id}&file={filter siteforge_filter_bug_attachment}{loop/attachment}">{loop/attachment}{end filter}</a></p>
+	{end if}
+</div>
+{end loop}
+{end if}
+
+<a name="siteforge-add-comment"></a>
+<h2>{intl Add Comment}</h2>
+
+{if session_valid ()}
+<form method="post" action="{site/prefix}/index/siteforge-bugs-comment-action" enctype="multipart/form-data">
+<input type="hidden" name="bug" value="{id}" />
+
+<p style="width: 420px"><span style="float: right"><a href="{site/prefix}/index/siteforge-doc-instructions-action" target="_blank">{intl Wiki Formatting Rules}</a></span>
+{intl Comment}:<br />
+<textarea name="body" cols="50" rows="10"></textarea></p>
+
+<p>{intl Attach a File}:<br />
+<input type="file" name="file" /></p>
+
+<p>
+	<input type="checkbox" checked="checked" name="subscribe" value="yes" /> {intl Subscribe me to this bug.}
+</p>
+
+<p>
+	<input type="submit" value="{intl Post}" />
+	&nbsp;
+	<input type="submit" value="{intl Preview}" onclick="return siteforge_preview (this.form)" />
+</p>
+
+</form>
+{end if}
+{if not session_valid ()}
+	{if not empty (obj.user)}
+	<p>{intl Invalid password.  Please try again.}</p>
+	{end if}
+	{if empty (obj.user)}
+	<p>{intl You must be logged in to comment.}</p>
+	{end if}
+	<form method="post">
+	<input type="hidden" name="id" value="{id}" />
+	<table cellpadding="5" border="0">
+		<tr>
+			<td>Username</td>
+			<td><input type="text" name="username" /></td>
+		</tr>
+		<tr>
+			<td>Password</td>
+			<td><input type="password" name="password" /></td>
+		</tr>
+		<tr>
+			<td>&nbsp;</td>
+			<td><input type="submit" value="Enter" /></td>
+		</tr>
+	</table>
+	</form>
+{end if}

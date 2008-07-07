@@ -1,0 +1,22 @@
+{box siteforge/nav?proj=[proj]}
+
+{alt #fff #eee}
+
+<table border="0" cellpadding="3" cellspacing="1" width="100%">
+	<tr>
+		<th width="40%">&nbsp;</th>
+		<th width="15%">{intl Today}</th>
+		<th width="15%">{intl Yesterday}</th>
+		<th width="15%">{intl This Month}</th>
+		<th width="15%">{intl Total}</th>
+	</tr>
+	{loop obj[stats]}
+		<tr style="background: {alt/next}">
+			<td>{loop/_key}</td>
+			<td align="right">{loop/today}</td>
+			<td align="right">{loop/yesterday}</td>
+			<td align="right">{loop/month}</td>
+			<td align="right">{loop/total}</td>
+		</tr>
+	{end loop}
+</table>

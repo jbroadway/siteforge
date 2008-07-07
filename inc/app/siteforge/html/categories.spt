@@ -1,0 +1,7 @@
+<ul>
+{loop obj[list]}
+	<li>
+		<a href="{site/prefix}/index/siteforge-app/cat.{loop/id}/name.{filter siteforge_filter_name}{loop/name}{end filter}">{loop/name} ({loop/count})</a>
+	</li>
+{end loop}
+</ul>
