@@ -173,7 +173,7 @@ CREATE TABLE sitellite_sidebar (
 
 INSERT INTO sitellite_sidebar VALUES ('members','Members','left',1,'all','sitemember/sidebar','approved','public',NULL,NULL,'admin','none','<br />\r\n');
 #INSERT INTO sitellite_sidebar VALUES ('main_menu','Main Menu','left',0,'all','sitellite/nav/common','approved','public',NULL,NULL,'admin','none','<br />\r\n');
-INSERT INTO sitellite_sidebar VALUES ('support','Got any questions?','left',0,'','','approved','public',NULL,NULL,'admin','development','Email us at <a href=\"mailto:info@simian.ca\">info@simian.ca</a> or call 1-204-221-6837 between 9am and 5pm CST Mon-Fri<br />\r\n');
+#INSERT INTO sitellite_sidebar VALUES ('support','Got any questions?','left',0,'','','approved','public',NULL,NULL,'admin','development','Email us at <a href=\"mailto:info@simian.ca\">info@simian.ca</a> or call 1-204-221-6837 between 9am and 5pm CST Mon-Fri<br />\r\n');
 
 #
 # Table structure for table 'sitellite_sidebar_position'
@@ -349,7 +349,7 @@ CREATE TABLE sitellite_sidebar_sv (
 
 INSERT INTO sitellite_sidebar_sv VALUES (1, 'admin', 'created', now(), '', 'no', 'yes', 'members','Members','left',1,'all','sitemember/sidebar','approved','public',NULL,NULL,'admin','none','<br />\r\n');
 #INSERT INTO sitellite_sidebar_sv VALUES (2, 'admin', 'created', now(), '', 'no', 'yes', 'main_menu','Main Menu','left',0,'all','sitellite/nav/common','approved','public',NULL,NULL,'admin','none','<br />\r\n');
-INSERT INTO sitellite_sidebar_sv VALUES (3, 'admin', 'created', now(), '', 'no', 'yes', 'support','Got any questions?','left',0,'','','approved','public',NULL,NULL,'admin','development','Email us at <a href=\"mailto:info@simian.ca\">info@simian.ca</a> or call 1-204-221-6837 between 9am and 5pm CST Mon-Fri<br />\r\n');
+#INSERT INTO sitellite_sidebar_sv VALUES (3, 'admin', 'created', now(), '', 'no', 'yes', 'support','Got any questions?','left',0,'','','approved','public',NULL,NULL,'admin','development','Email us at <a href=\"mailto:info@simian.ca\">info@simian.ca</a> or call 1-204-221-6837 between 9am and 5pm CST Mon-Fri<br />\r\n');
 
 #
 # Table structure for table 'sitellite_keywords'

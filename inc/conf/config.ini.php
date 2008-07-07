@@ -126,19 +126,19 @@ new_pages_under_current = 0
 
 ; This is the name of the default handler, when no specific request is
 ; made (ie. a request for yourWebSite.com/ or /index).
-default_handler			= index
+default_handler			= siteforge/index
 
 ; This is the name of the default handler type, when no specific request is
 ; made (ie. a request for yourWebSite.com/ or /index).  The type may be one
 ; of 'document', 'box', or 'form'.
-default_handler_type	= document
+default_handler_type	= box
 
 ; This is the default template set (ie. theme) used to render pages.  By using
 ; this setting, you can add your own template themes, install multiple themes
 ; in the same Sitellite installation, by adding instead of changing what's
 ; already there.
 ;default_template_set	= "test"
-default_template_set	= "default"
+default_template_set	= "siteforge"
 
 ; This is the default template used to render pages.  The default value
 ; is "default", which says to use html.default.tpl as your default.  If your
